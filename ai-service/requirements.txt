@@ -1,0 +1,10 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+pydantic==2.8.2
+numpy==2.1.1
+pandas==2.2.5
+scikit-learn==1.5.2
+matplotlib==3.9.2
+pytesseract==0.3.13
+spacy==3.7.5
+prophet==1.1.6
