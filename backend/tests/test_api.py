@@ -1,10 +1,8 @@
 from fastapi.testclient import TestClient
-import time
 
 from app.main import app
 
 client = TestClient(app)
-TIMESTAMP = str(int(time.time() * 1000))
 
 
 def test_summary_endpoint():
@@ -18,16 +16,16 @@ def test_summary_endpoint():
 def test_auth_register_and_login():
     register = client.post(
         '/api/auth/register',
-        json={'name': 'Ava', 'email': f'ava-{TIMESTAMP}@example.com', 'password': 'TestPass123!'},
+        json={'name': 'Ava', 'email': 'ava@example.com', 'password': 'TestPass123!'},
     )
     assert register.status_code == 200
     payload = register.json()
-    assert payload['user']['email'] == f'ava-{TIMESTAMP}@example.com'
+    assert payload['user']['email'] == 'ava@example.com'
     assert 'token' in payload
 
     login = client.post(
         '/api/auth/login',
-        json={'email': f'ava-{TIMESTAMP}@example.com', 'password': 'TestPass123!'},
+        json={'email': 'ava@example.com', 'password': 'TestPass123!'},
     )
     assert login.status_code == 200
     assert 'token' in login.json()
