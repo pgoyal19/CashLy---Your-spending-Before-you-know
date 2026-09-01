@@ -22,7 +22,7 @@ function App() {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+    const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
 
     fetch(`${apiBase}/api/dashboard`)
       .then((res) => res.json())
@@ -52,7 +52,7 @@ function App() {
 
   const handleRegister = async (event) => {
     event.preventDefault()
-    const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+    const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
 
     try {
       const response = await fetch(`${apiBase}/api/auth/register`, {
@@ -71,7 +71,7 @@ function App() {
 
   const handleExpenseAdd = async (event) => {
     event.preventDefault()
-    const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+    const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
 
     try {
       const response = await fetch(`${apiBase}/api/expenses`, {
